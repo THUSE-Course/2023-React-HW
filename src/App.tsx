@@ -1,10 +1,9 @@
 import React from "react";
-import { stepBoard } from "./utils/logic";
+import BoardScreen from "./BoardScreen";
 
 const App = () => {
-    stepBoard([]);
     return (
-        <p> Hello! </p>
+        <BoardScreen />
     );
 };
 

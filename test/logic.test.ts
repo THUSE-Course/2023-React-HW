@@ -16,7 +16,7 @@ const stepBoardGT = (board: Board): Board => {
             const checkList = [
                 [up, left], [up, j], [up, right],
                 [i, left], [i, right],
-                [down, left], [down, right],
+                [down, left], [down, j], [down, right],
             ];
 
             checkList.forEach((ord) => {
