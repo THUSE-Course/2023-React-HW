@@ -27,7 +27,7 @@ const BoardUI = () => {
     const [board, setBoard] = useState<Board>(BLANK_BOARD); // 该语句在 Step 2 中可以暂且忽视
     const step = () => {
         // Step 3 BEGIN
-
+        setBoard(stepBoard(board));
         // Step 3 END
     };
 
@@ -39,14 +39,18 @@ const BoardUI = () => {
         for (let j = 0; j < BOARD_LENGTH; ++j) {
             squareInnerList.push(
                 // Step 2 & 3 BEGIN
-
+                <div onClick={() => setBoard(flipCell(board, i, j))}>
+                    <Square color={board[i][j] ? "red" : "white"} />
+                </div>
                 // Step 2 & 3 END
             );
         }
 
         squareList.push(
             // Step 2 BEGIN
-
+            <div style={{ display: "flex", flexDirection: "row" }}>
+                {squareInnerList}
+            </div>
             // Step 2 END
         );
     }
@@ -58,6 +62,9 @@ const BoardUI = () => {
             </div>
             <button onClick={step}>
                 Step the board
+            </button>
+            <button onClick={() => setBoard(BLANK_BOARD)}>
+                Reset the board
             </button>
         </div>
     );
