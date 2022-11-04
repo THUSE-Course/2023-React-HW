@@ -20,20 +20,20 @@ const stepBoardGT = (board: Board): Board => {
             ];
 
             checkList.forEach((ord) => {
-                if (board[ord[0]][ord[1]] == 1) {
+                if (board[ord[0]][ord[1]] === 1) {
                     ++aliveCounter;
                 }
             });
 
             const nowState = board[i][j];
-            if (nowState == 0) {
-                if (aliveCounter == 3) {
+            if (nowState === 0) {
+                if (aliveCounter === 3) {
                     newBoard[i].push(1);
                 } else {
                     newBoard[i].push(0);
                 }
             } else {
-                if (aliveCounter == 2 || aliveCounter == 3) {
+                if (aliveCounter === 2 || aliveCounter === 3) {
                     newBoard[i].push(1);
                 } else {
                     newBoard[i].push(0);
@@ -60,7 +60,7 @@ const boardEqual = (a: Board, b: Board): boolean => {
 const TEST_TIMES = 10;
 const ITERATION_DEPTH = 5;
 
-it("[Step 1] Game logic test", () => {
+it("[Step 1] Game logic test (Step board)", () => {
     for (let test = 0; test < TEST_TIMES; ++test) {
         const initBoard: Board = [];
         for (let i = 0; i < BOARD_LENGTH; ++i) {
