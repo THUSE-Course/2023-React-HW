@@ -30,6 +30,11 @@ const BoardUI = () => {
         setBoard(stepBoard(board));
         // Step 3 END
     };
+    const flip = (i: number, j: number) => {
+        // Step 3 BEGIN
+        setBoard(flipCell(board, i, j))
+        // Step 3 END
+    };
 
     const squareList: any[] = [];
 
@@ -38,11 +43,11 @@ const BoardUI = () => {
 
         for (let j = 0; j < BOARD_LENGTH; ++j) {
             squareInnerList.push(
-                // Step 2 & 3 BEGIN
-                <div onClick={() => setBoard(flipCell(board, i, j))}>
+                <div onClick={() => flip(i, j)}>
+                    {/* Step 2 BEGIN */}
                     <Square color={board[i][j] ? "red" : "white"} />
+                    {/* Step 2 END */}
                 </div>
-                // Step 2 & 3 END
             );
         }
 
