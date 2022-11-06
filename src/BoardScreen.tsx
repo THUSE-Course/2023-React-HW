@@ -63,7 +63,7 @@ const BoardUI = (props: BoardUIProps) => {
 const BoardScreen = () => {
     /**
      * @todo [Step 3] 请在下述一处代码缺失部分填写合适的代码，使得组件可以调用 logic.ts 中的代码处理点击棋盘事件
-     * @todo [Step 4] 请在下述两处代码缺失部分填写合适的代码，使得按钮的行为符合预期且计时器资源分配、释放合理
+     * @todo [Step 4] 请在下述三处代码缺失部分填写合适的代码，使得点击行为的处理符合预期且计时器资源分配、释放合理
      */
     const [board, setBoard] = useState<Board>(BLANK_BOARD);
     const [autoPlay, setAutoPlay] = useState<boolean>(false);
@@ -73,9 +73,11 @@ const BoardScreen = () => {
         setBoard((board) => stepBoard(board));
     };
     const flip = (i: number, j: number) => {
-        // Step 3 BEGIN
-        setBoard(flipCell(board, i, j));
-        // Step 3 END
+        // Step 3 & 4 BEGIN
+        if (!autoPlay) {
+            setBoard(flipCell(board, i, j));
+        }
+        // Step 3 & 4 END
     };
 
     const startAutoPlay = () => {
