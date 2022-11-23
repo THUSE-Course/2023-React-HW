@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { BLANK_BOARD, Board, BOARD_LENGTH, stepBoard, flipCell, badFlipCell } from "./utils/logic";
+import { uFetch } from "./utils/network";
 
 interface SquareProps {
     color: string;
@@ -109,6 +110,13 @@ const BoardScreen = () => {
             </button>
             <button onClick={stopAutoPlay} disabled={!autoPlay}>
                 Stop auto play
+            </button>
+            <button onClick={() => {
+                uFetch("https://www.baidu.com")
+                    .then(console.log)
+                    .catch(console.log);
+            }}>
+                Test
             </button>
         </div>
     );
