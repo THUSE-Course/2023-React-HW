@@ -112,7 +112,13 @@ const BoardScreen = () => {
                 Stop auto play
             </button>
             <button onClick={() => {
-                uFetch("https://www.baidu.com")
+                uFetch("http://baike.baidu.com/api/openapi/BaikeLemmaCardApi", {
+                    scope: 103,
+                    format: "json",
+                    appid: 379020,
+                    bk_key: "关键字",
+                    bk_length: 600,
+                })
                     .then(console.log)
                     .catch(console.log);
             }}>

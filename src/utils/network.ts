@@ -2,7 +2,7 @@ import { USER_AGENT } from "../constants/strings";
 
 const uFetch = async (
     url: string,
-    param?: Record<string, string | undefined>,
+    param?: Record<string, number | string | undefined>,
     postBody?: object,
 ) => {
     // Construct fetch parameters
@@ -25,14 +25,14 @@ const uFetch = async (
             ? ""
             : Object.keys(param)
                 .filter((key: string) => param[key] !== undefined)
-                .map((key: string) => key + "=" + param[key])
+                .map((key: string) => key + ("=" + param[key]))
                 .join("&");
     const paramedURL = url + (serializedParam === "" ? "" : "?" + serializedParam);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const respose = await fetch(paramedURL, init);
-    return await respose.text();
+    return await respose.json();
 };
 
 export { uFetch };
